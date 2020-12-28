@@ -190,7 +190,7 @@ int main(int argc, char *argv[]) {
 	Simulator::Schedule (Seconds (0.5), &SendPacket, source, packetsPerStep);
 	Simulator::Schedule (Seconds (0.5 + packetsPerStep), &Step, c.Get (1), stepWidth, packetsPerStep, source);
 
-	Simulator::Stop(Seconds(1.5 + duration));
+	Simulator::Stop(Seconds(0.5 + duration));
 	Simulator::Run ();
 
 	Simulator::Destroy ();

@@ -196,30 +196,29 @@ NewTwoRayGroundPropagationLossModel::DoCalcRxPower (double txPowerDbm,
 	double h_t = a->GetPosition ().z + m_heightAboveZ;
 	double h_r = b->GetPosition ().z + m_heightAboveZ;
 
-	// Calculate a crossover distance, under which we use Friis
-	/*
-	 * 
-	 * dCross = (4 * pi * Ht * Hr) / lambda
-	 *
-	 */
-
-	double dCross = (4 * M_PI * h_t * h_r) / m_lambda;
 	double tmp = 0;
-	if (d <= 0*dCross)
+//	// Calculate a crossover distance, under which we use Friis
+//	/*
+//	 *
+//	 * dCross = (4 * pi * Ht * Hr) / lambda
+//	 *
+//	 */
+//
+//	double dCross = (4 * M_PI * h_t * h_r) / m_lambda;
+//	if (d <= 0*dCross)
+//	{
+//		//std::cout << "friis\n";
+//		// We use Friis
+//		double numerator = m_lambda * m_lambda;
+//		tmp = M_PI * distance;
+//		double denominator = 16 * tmp * tmp * m_systemLoss;
+//		double pr = 10 * std::log10 (numerator / denominator);
+//		NS_LOG_DEBUG ("Receiver within crossover (" << dCross << "m) for Two_ray path; using Friis");
+//		NS_LOG_DEBUG ("distance=" << distance << "m, attenuation coefficient=" << pr << "dB");
+//		return txPowerDbm + pr;
+//	}
+//	else   // Use Two-Ray Pathloss
 	{
-		//std::cout << "friis\n";
-		// We use Friis
-		double numerator = m_lambda * m_lambda;
-		tmp = M_PI * distance;
-		double denominator = 16 * tmp * tmp * m_systemLoss;
-		double pr = 10 * std::log10 (numerator / denominator);
-		NS_LOG_DEBUG ("Receiver within crossover (" << dCross << "m) for Two_ray path; using Friis");
-		NS_LOG_DEBUG ("distance=" << distance << "m, attenuation coefficient=" << pr << "dB");
-		return txPowerDbm + pr;
-	}
-	else   // Use Two-Ray Pathloss
-	{
-		//std::cout << "two\n";
 		double l_r = std::sqrt(std::pow(d,2) + std::pow((h_t + h_r),2));
 		double sinTheta = (h_t + h_r)/l_r;
 		double cosTheta = (d/l_r);
@@ -230,14 +229,8 @@ NewTwoRayGroundPropagationLossModel::DoCalcRxPower (double txPowerDbm,
 		std::complex<double> comp_tmp(0,-2 * M_PI * (l_d - l_r) / m_lambda);
 		comp_tmp = std::exp(comp_tmp);
 		comp_tmp *= R * m_G / l_r;
-		//std::cout << "\nR : " << R
-		//	<< ", theta : " << std::asin(sinTheta)
-		//	<< ", l_r : " << l_r
-		//	<< ", g/l_d : " << m_G/l_d
-		//	<< ", l_r stuff : " << comp_tmp;
 		comp_tmp += m_G/l_d;
 		tmp = std::abs(comp_tmp);
-		//std::cout << ", abs second part : " << tmp << " vs friis l_d : " << 1/l_d << std::endl << std::endl;
 		tmp *= m_lambda / (4 * M_PI);
 		tmp *= tmp;
 		double rayPr = 10 * std::log10(tmp * m_systemLoss);
