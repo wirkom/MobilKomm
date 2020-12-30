@@ -1,2 +1,2 @@
 #!/bin/sh
-cat $1 | grep "[0-9]\+$" > $1.csv
+cat $1 | grep "^+" | sed 's/.*rxPower=//' | sed 's/dbm, distance=/,/' | sed 's/m,.*//' > $1.csv

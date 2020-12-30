@@ -99,8 +99,6 @@ int main(int argc, char *argv[]) {
 
 	cmd.Parse(argc, argv);
 
-	Gnuplot gnuplot = Gnuplot("reference-rates.png");
-
 	NodeContainer c;
 	c.Create(2);
 
@@ -135,6 +133,7 @@ int main(int argc, char *argv[]) {
 		wifiChannel.AddPropagationLoss("ns3::JakesPropagationLossModel");
 	}
 
+	LogComponentEnableAll (LogLevel (LOG_PREFIX_TIME));
 	LogComponentEnable("YansWifiChannel", LOG_LEVEL_DEBUG);
 	YansWifiPhyHelper wifiPhy = YansWifiPhyHelper::Default();
 	wifiPhy.Set("RxGain", DoubleValue(-2));
@@ -187,7 +186,7 @@ int main(int argc, char *argv[]) {
 	// 2.2: stationary staB 10m from staA, 1h
 	// always: send one packet per sec from staA to staB
 
-	Simulator::Schedule (Seconds (0.5), &SendPacket, source, packetsPerStep);
+	Simulator::Schedule (Seconds (1.0), &SendPacket, source, packetsPerStep);
 	Simulator::Schedule (Seconds (0.5 + packetsPerStep), &Step, c.Get (1), stepWidth, packetsPerStep, source);
 
 	Simulator::Stop(Seconds(0.5 + duration));
