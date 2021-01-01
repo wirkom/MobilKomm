@@ -9,7 +9,12 @@ run () {
 	startPos=$5
 	tnr=$6
 	rawVersion=$7
-	./waf --run "scratch/PA_957634_practicalAssignment --lossMod=$lossMod --stepWidth=$stepwidth --duration=$duration --packetsPerStep=$packetsPerStep --startPos=$startPos" > PA_957634_helper/PA_957634_log_${tnr}_$lossMod 2>&1 && bash PA_957634_raw2csv_$rawVersion.sh PA_957634_helper/PA_957634_log_${tnr}_$lossMod
+	./waf --run "scratch/PA_957634_practicalAssignment --lossMod=$lossMod --stepWidth=$stepwidth --duration=$duration --packetsPerStep=$packetsPerStep --startPos=$startPos" > PA_957634_helper/PA_957634_log_${tnr}_$lossMod 2>&1
+	bash PA_957634_raw2csv_$rawVersion.sh PA_957634_helper/PA_957634_log_${tnr}_$lossMod
+	mv PA_957634_pa-0-0.pcap PA_957634_helper/PA_956634_${tnr}_${lossMod}_0-0.pcap
+	mv PA_957634_pa-0-0.readable PA_957634_helper/PA_956634_${tnr}_${lossMod}_0-0.readable 2>/dev/null
+	mv PA_957634_pa-1-0.pcap PA_957634_helper/PA_956634_${tnr}_${lossMod}_1-0.pcap
+	mv PA_957634_pa-1-0.readable PA_957634_helper/PA_956634_${tnr}_${lossMod}_1-0.readable 2>/dev/null
 }
 
 rm -rf PA_957634_helper
