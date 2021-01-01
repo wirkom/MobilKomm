@@ -52,6 +52,9 @@ run 's' '1' '351' '1' '0' '4' '2.1_3.1_4'
 
 echo "plots"
 gnuplot PA_957634_plot.plt
+gnuplot PA_957634_plot21.plt
+gnuplot PA_957634_plot31.plt
+gnuplot PA_957634_plot4.plt
 gnuplot PA_957634_plot22.plt
 gnuplot PA_957634_plot32.plt
 
