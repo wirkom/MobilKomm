@@ -22,7 +22,7 @@
  */
 
 // This whole file is copied from ns3::TwoRayGroundPropagationLossModel
-// The changed parts are marked
+// The doCalcRxPower method is changed
 
 #include "ns3/PA_957634_newTwoRayGroundPropModel.h"
 #include "ns3/log.h"
