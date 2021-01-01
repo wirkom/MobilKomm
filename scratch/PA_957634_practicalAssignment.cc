@@ -178,7 +178,7 @@ int main(int argc, char *argv[]) {
 	source->Connect (remote);
 
 	// Tracing
-	wifiPhy.EnablePcap ("pa", devices, true);
+	wifiPhy.EnablePcap ("PA_957634_pa", devices, true);
 
 
 	// TODO: stationary staA

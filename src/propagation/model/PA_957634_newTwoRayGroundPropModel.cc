@@ -24,7 +24,7 @@
 // This whole file is copied from ns3::TwoRayGroundPropagationLossModel
 // The changed parts are marked
 
-#include "ns3/newTwoRayGroundPropModel.h"
+#include "ns3/PA_957634_newTwoRayGroundPropModel.h"
 #include "ns3/log.h"
 #include "ns3/mobility-model.h"
 #include "ns3/boolean.h"

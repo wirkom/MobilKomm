@@ -15,7 +15,7 @@ def build(bld):
         'model/kun-2600-mhz-propagation-loss-model.cc',
         'model/channel-condition-model.cc',
         'model/three-gpp-propagation-loss-model.cc',
-        'model/newTwoRayGroundPropModel.cc',
+        'model/PA_957634_newTwoRayGroundPropModel.cc',
         ]
 
     module_test = bld.create_ns3_module_test_library('propagation')
@@ -51,7 +51,7 @@ def build(bld):
         'model/kun-2600-mhz-propagation-loss-model.h',
         'model/channel-condition-model.h',
         'model/three-gpp-propagation-loss-model.h',
-        'model/newTwoRayGroundPropModel.h',
+        'model/PA_957634_newTwoRayGroundPropModel.h',
         ]
 
     if (bld.env['ENABLE_EXAMPLES']):
