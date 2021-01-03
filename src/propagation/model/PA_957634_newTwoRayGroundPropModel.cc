@@ -19,6 +19,7 @@
  * Contributions: Timo Bingmann <timo.bingmann@student.kit.edu>
  * Contributions: Tom Hewer <tomhewer@mac.com> for Two Ray Ground Model
  *                Pavel Boyko <boyko@iitp.ru> for matrix
+ *                Mirko H. Wagner <mirwagner@uos.de> for non-approximative model
  */
 
 // This whole file is copied from ns3::TwoRayGroundPropagationLossModel
