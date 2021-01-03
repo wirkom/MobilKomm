@@ -1,0 +1,5 @@
+#!/bin/sh
+mkdir MoCo_WiTe_202021_PA_957634
+cp PA_957634_* MoCo_WiTe_202021_PA_957634
+zip MoCo_WiTe_202021_PA_957634.zip MoCo_WiTe_202021_PA_957634 -r
+rm MoCo_WiTe_202021_PA_957634 -rf
